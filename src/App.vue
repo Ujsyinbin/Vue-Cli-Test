@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-	  <input v-model="inputvalue" />
+	  <input v-model="inputvalue.inputvalue1" /><br>
+	  <input v-model="inputvalue.inputvalue2" />
 	  <button @click="submit">Submit</button>
 	  <todo-item v-for="(value,index) in list" :key='index' :value='value' :index='index' @remove="remove(index)"></todo-item>
   </div>
@@ -15,14 +16,20 @@ export default {
 	},
 	data:function(){
 		return{
-			inputvalue:'',
 			list:[],
+			inputvalue:{
+				inputvalue1:'',
+				inputvalue2:''
+			}
 		}
 	},
 	methods:{
 		submit(){
 			this.list.push(this.inputvalue)
-			this.inputvalue=''
+			this.inputvalue = {
+				inputvalue1:'',
+				inputvalue2:''
+			}
 		},
 		remove(index){
 			this.list.splice(index,1)
